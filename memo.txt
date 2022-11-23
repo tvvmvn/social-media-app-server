@@ -1,0 +1,101 @@
+# boiler project
+  Express auth, express auth with react
+  Typescript class vs javascript object
+  Node-streaming 
+  => boilerplate
+  
+  Project based app (considering switchable)
+  1 express or nestJS(switch)
+  v-spa or react (switch)
+  mongodb or mysql (switch)
+  2 REST API (method, url define), VIEW separately
+  3 using Postman
+  4 exlicit Architecture map
+
+  v-spa의 장점
+  JavaScript 내에서 모두 데이터를 다룬다
+  pug/JS 나누어질 필요가 없다
+  Admin VS normal page URL
+
+  slug or something
+
+# REST API
+동사를 사용하지 않는다. 명사
+
+# BOILER-PLATE
+
+1 USER
+GET /user/login
+POST /user/login
+GET /user/signUp
+POST /user/signUp
+GET /{username}
+POST /{username}
+
+GET /user/password/change
+POST /user/password/change
+GET /user/password/reset
+POST /user/password/reset
+
+# MOVIES
+
+GET
+/movies 
+/movies/inception 
+/movies/inception/actors
+/movies?page=5
+/movies?min_rating=9.8
+/movies?release_date=2021
+/movies/new
+/movies/inception/edit
+
+POST
+/movies 
+/movies/inception/actors
+
+PUT
+/movies/inception
+/movies/inception/actors
+
+DELETE
+/movies/inception
+/movies/inception/actors
+
+
+# SWAGGER realworld 
+
+1 USER
+GET
+/user - 로그인한 사용자 정보
+/users - 사용자 목록
+POST
+/users - 회원가입
+/users/login - 로그인
+PUT
+/user - 회원정보 업데이트
+DELETE 
+/users/{slug} - 회원 삭제
+
+2 ARTICLES
+GET
+/articles
+/articles/feed
+/articles/{slug}
+POST
+/articles
+/articles/{slug}/comments
+/articles/{slug}/favorite
+PUT
+/articles/{slug}
+DELETE
+/articles/{slug}
+/articles/{slug}/comments/{id}
+/article/{slug}/favorite
+
+3 profiles
+GET
+/profiles/{username}
+POST
+/profiles/{username}/follow
+DELETE
+/profiles/{username}/follow
