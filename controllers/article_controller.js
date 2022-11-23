@@ -1,5 +1,6 @@
 const { Follow, Article, Favorite } = require("../models/model");
 const formidable = require("formidable");
+const fs = require("fs");
 
 exports.feed = async (req, res, next) => {
   try {
@@ -56,7 +57,7 @@ exports.create = async (req, res, next) => {
         const oldpath = photo.filepath;
         const ext = photo.originalFilename.split(".")[1]
         const newName = photo.newFilename + "." + ext;
-        const newpath = __dirname + "/data/articles/" + newName;
+        const newpath = "data/articles/" + newName;
 
         fs.renameSync(oldpath, newpath);
 

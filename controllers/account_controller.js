@@ -73,7 +73,7 @@ exports.register = [
     try {
       const {username, email, password} = req.body;
 
-      return console.log(req.body);
+      // return console.log(req.body);
 
       const salt = crypto.randomBytes(16).toString("hex");
       const hashedPassword = crypto
