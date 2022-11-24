@@ -63,12 +63,12 @@ exports.create = async (req, res, next) => {
         const newPath = `${__dirname}/../data/articles/${newName}`;
 
         // fs.renameSync(oldPath, newPath);
-        fs.copyFileSync(oldPath, newPath);
-        // mv(oldPath, newPath, (err) => {
-        //   if (err) {
-        //     return next(err);
-        //   }
-        // })
+        // fs.copyFileSync(oldPath, newPath);
+        mv(oldPath, newPath, (err) => {
+          if (err) {
+            return next(err);
+          }
+        })
 
         return newName;
       })
