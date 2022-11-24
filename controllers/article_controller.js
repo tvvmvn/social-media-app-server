@@ -1,5 +1,6 @@
 const { Follow, Article, Favorite } = require("../models/model");
 const formidable = require("formidable");
+const fs = require("fs");
 const mv = require("mv");
 
 exports.feed = async (req, res, next) => {
@@ -61,12 +62,13 @@ exports.create = async (req, res, next) => {
         const newName = photo.newFilename + "." + ext;
         const newPath = `${__dirname}/../data/articles/${newName}`;
 
-        // fs.renameSync(oldpath, newpath);
-        mv(oldPath, newPath, (err) => {
-          if (err) {
-            return next(err);
-          }
-        })
+        // fs.renameSync(oldPath, newPath);
+        fs.copyFileSync(oldPath, newPath);
+        // mv(oldPath, newPath, (err) => {
+        //   if (err) {
+        //     return next(err);
+        //   }
+        // })
 
         return newName;
       })
