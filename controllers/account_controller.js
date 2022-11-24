@@ -132,12 +132,12 @@ exports.upload_image = async (req, res, next) => {
       const newPath = `${__dirname}/../data/users/${newName}`; 
 
       // fs.renameSync(oldPath, newPath);
-      fs.copyFileSync(oldPath, newPath);
-      // mv(oldPath, newPath, (err) => {
-      //   if (err) {
-      //     return next(err);
-      //   }
-      // })
+      // fs.copyFileSync(oldPath, newPath);
+      mv(oldPath, newPath, (err) => {
+        if (err) {
+          return next(err);
+        }
+      })
 
       user.image = newName;
       await user.save();
