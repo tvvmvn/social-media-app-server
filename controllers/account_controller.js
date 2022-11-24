@@ -3,6 +3,7 @@ const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const formidable = require("formidable");
 const fs = require("fs");
+const mv = require("mv");
 
 exports.login = async (req, res, next) => {
   try {
@@ -130,7 +131,12 @@ exports.upload_image = async (req, res, next) => {
       const newName = image.newFilename + "." + ext;
       const newPath = `${__dirname}/../data/users/${newName}`; 
 
-      fs.renameSync(oldPath, newPath);
+      // fs.renameSync(oldPath, newPath);
+      mv(oldPath, newPath, (err) => {
+        if (err) {
+          return next(err);
+        }
+      })
 
       user.image = newName;
       await user.save();
