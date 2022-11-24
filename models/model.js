@@ -11,8 +11,8 @@ const userSchema = new Schema({
 })
 
 const followSchema = new Schema({
-  follower: {type: String, ref: 'User'},
-  following: {type: String, ref: 'User'}
+  follower: {type: Schema.ObjectId, ref: 'User'},
+  following: {type: Schema.ObjectId, ref: 'User'}
 })
 
 const articleSchema = new Schema({

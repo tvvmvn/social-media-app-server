@@ -73,7 +73,7 @@ exports.register = [
     try {
       const {username, email, password} = req.body;
 
-      return console.log(req.body);
+      // return console.log(req.body);
 
       const salt = crypto.randomBytes(16).toString("hex");
       const hashedPassword = crypto
@@ -128,7 +128,7 @@ exports.upload_image = async (req, res, next) => {
       const oldPath = image.filepath;
       const ext = image.originalFilename.split(".")[1];
       const newName = image.newFilename + "." + ext;
-      const newPath = "data/users/" + newName;
+      const newPath = `${__dirname}/../data/users/${newName}`; 
 
       fs.renameSync(oldPath, newPath);
 

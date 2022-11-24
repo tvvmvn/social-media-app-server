@@ -1,13 +1,16 @@
 const { Follow, Article, Favorite } = require("../models/model");
 const formidable = require("formidable");
+const fs = require("fs");
 
 exports.feed = async (req, res, next) => {
   try {
     const loginUser = req.user;
     const follows = await Follow.find({ follower: loginUser._id });
 
+    const users = [...follows.map(follow => follow.following), loginUser._id];
+
     const articles = await Article
-      .find({ user: [...follows.map(follow => follow.following), loginUser._id]})
+      .find({user: {$in: users}})
       .sort([["created", "descending"]])
       .populate("user")
       .skip(req.query.skip)
@@ -21,7 +24,7 @@ exports.feed = async (req, res, next) => {
       article.isFavorite = !!favorite;
     }
 
-    res.json(articles)
+    res.json(articles);
 
   } catch (error) {
     next(error)
@@ -56,7 +59,7 @@ exports.create = async (req, res, next) => {
         const oldpath = photo.filepath;
         const ext = photo.originalFilename.split(".")[1]
         const newName = photo.newFilename + "." + ext;
-        const newpath = __dirname + "/data/articles/" + newName;
+        const newpath = `${__dirname}/../data/articles/${newName}`;
 
         fs.renameSync(oldpath, newpath);
 

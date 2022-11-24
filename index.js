@@ -10,7 +10,6 @@ require('dotenv').config();
 // # DATABASE
 const mongoose = require("mongoose");
 const mongoDB = process.env.MONGODB_URI;
-console.log(mongoDB)
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 // const seed = require("./seed");
 
