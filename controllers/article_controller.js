@@ -56,10 +56,10 @@ exports.create = async (req, res, next) => {
       // validate image...
       
       const photos = images.map(photo => {
-        const oldpath = photo.filepath;
+        const oldPath = photo.filepath;
         const ext = photo.originalFilename.split(".")[1]
         const newName = photo.newFilename + "." + ext;
-        const newpath = `${__dirname}/../data/articles/${newName}`;
+        const newPath = `${__dirname}/../data/articles/${newName}`;
 
         // fs.renameSync(oldpath, newpath);
         mv(oldPath, newPath, (err) => {
