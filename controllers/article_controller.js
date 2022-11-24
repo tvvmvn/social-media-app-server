@@ -1,6 +1,5 @@
 const { Follow, Article, Favorite } = require("../models/model");
 const formidable = require("formidable");
-const fs = require("fs");
 
 exports.feed = async (req, res, next) => {
   try {
