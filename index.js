@@ -18,8 +18,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
-app.use(express.static("public"));
-app.use(express.static("data"));
+app.use('/static', express.static("public"));
+app.use('/data', express.static("data"));
+app.use
+
 app.use('/', indexRouter);
 
 // # ERROR HANDLER
